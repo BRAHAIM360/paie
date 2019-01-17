@@ -1,0 +1,498 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CFD6656E-E885-492E-9EA1-2F5120C2770A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WindowsFormsApplication1</RootNamespace>
+    <AssemblyName>WindowsFormsApplication1</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ADDformule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ADDformule.Designer.cs">
+      <DependentUpon>ADDformule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Add_user.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add_user.Designer.cs">
+      <DependentUpon>Add_user.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Banque.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="baréme_IRG.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Barém_cnas.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="bulltin_model.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="bulltin_model.Designer.cs">
+      <DependentUpon>bulltin_model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="bultin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="bultin.Designer.cs">
+      <DependentUpon>bultin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="bultin_paie.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="choisire_ent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="choisire_ent.Designer.cs">
+      <DependentUpon>choisire_ent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cna.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Constant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Constant.Designer.cs">
+      <DependentUpon>Constant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Constantt.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="contrat.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Départemetent.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entreprise.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fiche_Rubriquecs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fiche_Rubriquecs.Designer.cs">
+      <DependentUpon>fiche_Rubriquecs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form4.Designer.cs">
+      <DependentUpon>Form4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form5.Designer.cs">
+      <DependentUpon>Form5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ajouter_banque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ajouter_banque.Designer.cs">
+      <DependentUpon>Ajouter_banque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form6.Designer.cs">
+      <DependentUpon>Form6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formule.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="liste-rubrique.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="liste-rubrique.Designer.cs">
+      <DependentUpon>liste-rubrique.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Liste_ent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Liste_ent.Designer.cs">
+      <DependentUpon>Liste_ent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Liste_user.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Liste_user.Designer.cs">
+      <DependentUpon>Liste_user.cs</DependentUpon>
+    </Compile>
+    <Compile Include="login.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Paramétre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paramétre.Designer.cs">
+      <DependentUpon>Paramétre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pp.Designer.cs">
+      <DependentUpon>pp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Print.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Print.Designer.cs">
+      <DependentUpon>Print.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ruberique_bulltin.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rubrique.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="salariés.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="société.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="société.Designer.cs">
+      <DependentUpon>société.cs</DependentUpon>
+    </Compile>
+    <Compile Include="source\Banquee.cs" />
+    <Compile Include="source\Rubqrique\bulltin_paieeee.cs" />
+    <Compile Include="source\Rubqrique\contratt.cs" />
+    <Compile Include="source\déparetementt.cs" />
+    <Compile Include="source\entreprisee.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form3.Designer.cs">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="source\Rubqrique\Formule.cs" />
+    <Compile Include="source\Loginn.cs" />
+    <Compile Include="source\Rubqrique\Base.cs" />
+    <Compile Include="source\Rubqrique\Constant.cs" />
+    <Compile Include="source\Rubqrique\Gain.cs" />
+    <Compile Include="source\Rubqrique\Nombre.cs" />
+    <Compile Include="source\Rubqrique\Retenue.cs" />
+    <Compile Include="source\Rubqrique\Rubriquee.cs" />
+    <Compile Include="source\Rubqrique\Taux.cs" />
+    <Compile Include="salariée.cs" />
+    <Compile Include="teste.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ADDformule.resx">
+      <DependentUpon>ADDformule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Add_user.resx">
+      <DependentUpon>Add_user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ajouter_banque.resx">
+      <DependentUpon>Ajouter_banque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bulltin_model.resx">
+      <DependentUpon>bulltin_model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bultin.resx">
+      <DependentUpon>bultin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="choisire_ent.resx">
+      <DependentUpon>choisire_ent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Constant.resx">
+      <DependentUpon>Constant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fiche_de_paie.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fiche_Rubriquecs.resx">
+      <DependentUpon>fiche_Rubriquecs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form3.resx">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form4.resx">
+      <DependentUpon>Form4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form5.resx">
+      <DependentUpon>Form5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form6.resx">
+      <DependentUpon>Form6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="liste-rubrique.resx">
+      <DependentUpon>liste-rubrique.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Liste_ent.resx">
+      <DependentUpon>Liste_ent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Liste_user.resx">
+      <DependentUpon>Liste_user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paramétre.resx">
+      <DependentUpon>Paramétre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pp.resx">
+      <DependentUpon>pp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Print.resx">
+      <DependentUpon>Print.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Report1.rdlc" />
+    <EmbeddedResource Include="Report3.rdlc" />
+    <EmbeddedResource Include="société.resx">
+      <DependentUpon>société.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="ClassDiagram1.cd">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="paie.rdlc" />
+    <EmbeddedResource Include="paie2.rdlc" />
+    <EmbeddedResource Include="paiee.rdlc" />
+    <None Include="Properties\DataSources\Bulltin_paieeee.datasource" />
+    <None Include="Properties\DataSources\bultin.datasource" />
+    <None Include="Properties\DataSources\Liste_rubrique.datasource" />
+    <None Include="Properties\DataSources\ruberique_bulltin.datasource" />
+    <None Include="Properties\DataSources\rubrique.datasource" />
+    <None Include="Properties\DataSources\salariés.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1487001205_go-home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Admin-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\123.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1492402858_user_male.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EWynBnd2.gif" />
+    <None Include="Resources\EWynBnd1.gif" />
+    <None Include="Resources\EWynBnd.gif" />
+    <None Include="Resources\imgserver %281%29.jpg" />
+    <None Include="Resources\left-arrow.png" />
+    <None Include="Resources\imgserver.jpg" />
+    <None Include="Resources\Admin-icon1.png" />
+    <None Include="Resources\1492637985_Cancel.ico" />
+    <None Include="Resources\1492638112_error.ico" />
+    <None Include="Resources\1492638164_error.ico" />
+    <None Include="Resources\1492638307_Remove.ico" />
+    <None Include="Resources\1492638320_Check.ico" />
+    <None Include="Resources\1492638877_General_-_Office_35.ico" />
+    <None Include="Resources\1492642524_Add.ico" />
+    <None Include="Resources\1492642570_Synchronize.ico" />
+    <None Include="Resources\1492642551_Remove.ico" />
+    <None Include="Resources\1492792533_user.png" />
+    <None Include="Resources\1492899687_Revert.ico" />
+    <None Include="Resources\1494198677_Print.png" />
+    <None Include="Resources\1494198748_Print.ico" />
+    <None Include="Resources\200w_d.gif" />
+    <None Include="Resources\200w_d %281%29.gif" />
+    <None Include="Resources\1494260948_floppy_disk_save.ico" />
+    <None Include="Resources\1494261121_powered_by_foursquare.ico" />
+    <None Include="Resources\1487028798_printer.png" />
+    <None Include="Resources\1494551052_arrow_state_blue_expanded.png" />
+    <None Include="Resources\1494551228_Print.png" />
+    <None Include="data\paie.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="paie.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="paie_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>paie.mdf</DependentUpon>
+    </Content>
+    <Content Include="Resources\20615-bubka-CreditCard_vista.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

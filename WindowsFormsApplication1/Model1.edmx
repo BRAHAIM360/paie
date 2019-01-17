@@ -1,0 +1,771 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="paieModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'C:\USERS\BRAHIM\DESKTOP\OPTIMISER 3\OPTIMISER 3\9-4-2017_2\GESTION DE LA PAIE\WINDOWSFORMSAPPLICATION1\PAIE.MDF.dbo.aze' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="aze">
+          <Property Name="mahi" Type="char" MaxLength="10" />
+        </EntityType>-->
+        <EntityType Name="Banque">
+          <Key>
+            <PropertyRef Name="id_Banque" />
+          </Key>
+          <Property Name="id_Banque" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="téléphonee" Type="nchar" MaxLength="20" />
+          <Property Name="nom_banque" Type="nchar" MaxLength="300" />
+          <Property Name="adresse_banque" Type="nchar" MaxLength="300" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\BRAHIM\DESKTOP\OPTIMISER 3\OPTIMISER 3\9-4-2017_2\GESTION DE LA PAIE\WINDOWSFORMSAPPLICATION1\PAIE.MDF.dbo.Barém_cnas' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Barém_cnas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Montant" Type="float" />
+          <Property Name="Libelé" Type="nchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="baréme_IRG">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="valeur_inferieur" Type="float" />
+          <Property Name="valeur_supérieur" Type="float" />
+          <Property Name="Montant" Type="float" />
+        </EntityType>
+        <EntityType Name="bultin_paie">
+          <Key>
+            <PropertyRef Name="id_bulltin" />
+          </Key>
+          <Property Name="id_bulltin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mois" Type="nchar" MaxLength="10" />
+          <Property Name="année" Type="nchar" MaxLength="4" />
+          <Property Name="net_a_apyer" Type="float" />
+          <Property Name="salair_poste" Type="float" />
+          <Property Name="totale_cotisable" Type="float" />
+          <Property Name="net_imposable" Type="float" />
+          <Property Name="Total_Retenu" Type="float" />
+          <Property Name="mode_reglement" Type="nchar" MaxLength="10" />
+          <Property Name="id_salarié" Type="int" />
+        </EntityType>
+        <EntityType Name="Cnas">
+          <Key>
+            <PropertyRef Name="id_cnas" />
+          </Key>
+          <Property Name="id_cnas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_cnas" Type="nchar" MaxLength="20" />
+          <Property Name="adress_cnas" Type="nchar" MaxLength="30" />
+          <Property Name="wilaya" Type="nchar" MaxLength="20" />
+          <Property Name="téléphone" Type="nchar" MaxLength="30" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\BRAHIM\DESKTOP\OPTIMISER 3\OPTIMISER 3\9-4-2017_2\GESTION DE LA PAIE\WINDOWSFORMSAPPLICATION1\PAIE.MDF.dbo.Constantt' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Constantt">
+          <Key>
+            <PropertyRef Name="id_const" />
+          </Key>
+          <Property Name="id_const" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nchar" MaxLength="20" />
+          <Property Name="Intitulé" Type="nchar" MaxLength="50" />
+          <Property Name="Valeur" Type="float" />
+        </EntityType>
+        <EntityType Name="contrat">
+          <Key>
+            <PropertyRef Name="id_contrat" />
+          </Key>
+          <Property Name="id_contrat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date_embouche" Type="date" />
+          <Property Name="frequnce_Paie" Type="nchar" MaxLength="20" />
+          <Property Name="base_paie" Type="float" />
+          <Property Name="id_salarié" Type="int" />
+          <Property Name="mode_reglement" Type="nchar" MaxLength="20" />
+          <Property Name="salair_base" Type="float" />
+          <Property Name="taux_jour" Type="float" />
+          <Property Name="taux_heure" Type="float" />
+          <Property Name="statu" Type="nchar" MaxLength="10" />
+          <Property Name="date_fin" Type="date" />
+          <Property Name="date_sotie" Type="date" />
+          <Property Name="mod_calcule" Type="nchar" MaxLength="20" />
+          <Property Name="rémunération" Type="nchar" MaxLength="20" />
+          <Property Name="montont_exoneration" Type="float" />
+          <Property Name="mode_paiment" Type="nchar" MaxLength="20" />
+          <Property Name="banque" Type="nchar" MaxLength="10" />
+          <Property Name="CCP" Type="nchar" MaxLength="100" />
+          <Property Name="Rip" Type="nchar" MaxLength="100" />
+          <Property Name="exoneration_de_irg" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Départemetent">
+          <Key>
+            <PropertyRef Name="id_département" />
+          </Key>
+          <Property Name="id_département" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_départ" Type="nchar" MaxLength="20" />
+          <Property Name="chéf_département" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Entreprise">
+          <Key>
+            <PropertyRef Name="id_entreprise" />
+          </Key>
+          <Property Name="id_entreprise" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom_ent" Type="nchar" MaxLength="20" />
+          <Property Name="adresse" Type="nchar" MaxLength="20" />
+          <Property Name="form_juriduique" Type="nchar" MaxLength="10" />
+          <Property Name="email" Type="text" />
+          <Property Name="Activité" Type="nchar" MaxLength="100" />
+          <Property Name="rejistre_comerce" Type="nchar" MaxLength="50" />
+          <Property Name="Identifiant_Fiscal" Type="nchar" MaxLength="50" />
+          <Property Name="code_postal" Type="nchar" MaxLength="10" />
+          <Property Name="Ville" Type="nchar" MaxLength="20" />
+          <Property Name="fax" Type="nchar" MaxLength="30" />
+          <Property Name="id_user" Type="int" />
+          <Property Name="téléphone" Type="nchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="formule">
+          <Key>
+            <PropertyRef Name="id_formule" />
+          </Key>
+          <Property Name="id_formule" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="float" />
+          <Property Name="Base" Type="float" />
+          <Property Name="taux" Type="float" />
+          <Property Name="montont" Type="float" />
+          <Property Name="id_rubrique" Type="int" />
+          <Property Name="equoiation" Type="nchar" MaxLength="23" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'C:\USERS\BRAHIM\DESKTOP\OPTIMISER 3\OPTIMISER 3\9-4-2017_2\GESTION DE LA PAIE\WINDOWSFORMSAPPLICATION1\PAIE.MDF.dbo.JOURNALEE' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="JOURNALEE">
+          <Property Name="matri" Type="nchar" MaxLength="10" />
+          <Property Name="nom_prénom" Type="nchar" MaxLength="30" />
+          <Property Name="nbr" Type="nchar" MaxLength="5" />
+          <Property Name="SALBAS" Type="nchar" MaxLength="10" />
+          <Property Name="IND_IE" Type="nchar" MaxLength="10" />
+          <Property Name="NUISAN" Type="nchar" MaxLength="10" />
+          <Property Name="IFSP" Type="nchar" MaxLength="10" />
+          <Property Name="SALPOST" Type="nchar" MaxLength="10" />
+          <Property Name="SS" Type="nchar" MaxLength="10" />
+          <Property Name="PANI" Type="nchar" MaxLength="10" />
+          <Property Name="TANSP" Type="nchar" MaxLength="10" />
+          <Property Name="NETIMP" Type="nchar" MaxLength="10" />
+          <Property Name="IRG" Type="nchar" MaxLength="10" />
+          <Property Name="NETPAI" Type="nchar" MaxLength="10" />
+          <Property Name="Brut" Type="nchar" MaxLength="10" />
+        </EntityType>-->
+        <EntityType Name="login">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="utilisateur" Type="nchar" MaxLength="20" />
+          <Property Name="mot_de_pass" Type="nchar" MaxLength="20" />
+          <Property Name="role" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="ruberique_bulltin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_bulltin" Type="int" />
+          <Property Name="code" Type="nchar" MaxLength="5" />
+          <Property Name="nbr_base" Type="nchar" MaxLength="15" />
+          <Property Name="taux" Type="nchar" MaxLength="10" />
+          <Property Name="gain" Type="nchar" MaxLength="12" />
+          <Property Name="retenue" Type="nchar" MaxLength="12" />
+          <Property Name="libellé" Type="nchar" MaxLength="34" />
+        </EntityType>
+        <EntityType Name="rubrique">
+          <Key>
+            <PropertyRef Name="id_rubrique" />
+          </Key>
+          <Property Name="id_rubrique" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nchar" MaxLength="20" />
+          <Property Name="libellé" Type="text" />
+          <Property Name="compt" Type="int" />
+          <Property Name="abrégé" Type="nchar" MaxLength="10" />
+          <Property Name="date_de_création" Type="datetime" />
+          <Property Name="Compte_contable" Type="nchar" MaxLength="20" />
+          <Property Name="montant" Type="float" />
+          <Property Name="imopsalble" Type="nchar" MaxLength="20" />
+          <Property Name="cotisable" Type="bit" />
+          <Property Name="sens" Type="bit" />
+          <Property Name="inclur_dans_brut" Type="bit" />
+          <Property Name="ne_pas_inclur_dans_masse_salarié" Type="bit" />
+          <Property Name="reporter_aprée_cloture_mois" Type="bit" />
+          <Property Name="imopsalblee" Type="nchar" MaxLength="15" />
+          <Property Name="valeur_initia" Type="float" />
+          <Property Name="Type_val" Type="nchar" MaxLength="15" />
+          <Property Name="etat" Type="bit" />
+        </EntityType>
+        <EntityType Name="salariés">
+          <Key>
+            <PropertyRef Name="id_salarié" />
+          </Key>
+          <Property Name="matruculation" Type="nchar" MaxLength="20" />
+          <Property Name="nom" Type="nchar" MaxLength="20" />
+          <Property Name="prénom" Type="nchar" MaxLength="20" />
+          <Property Name="dat_naiss" Type="date" />
+          <Property Name="lieu_naiss" Type="nchar" MaxLength="20" />
+          <Property Name="commune_naiss" Type="nchar" MaxLength="10" />
+          <Property Name="wilaya_naiss" Type="nchar" MaxLength="10" />
+          <Property Name="prénom_pére" Type="nchar" MaxLength="20" />
+          <Property Name="nom_mére" Type="nchar" MaxLength="20" />
+          <Property Name="prénom_mére" Type="nchar" MaxLength="20" />
+          <Property Name="sexe" Type="nchar" MaxLength="10" />
+          <Property Name="situation_famille" Type="nchar" MaxLength="10" />
+          <Property Name="nationalité" Type="nchar" MaxLength="20" />
+          <Property Name="adresse_compléte" Type="ntext" />
+          <Property Name="code_postal" Type="int" />
+          <Property Name="matruculationss" Type="nchar" MaxLength="10" />
+          <Property Name="id_salarié" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="personns_charge" Type="int" />
+          <Property Name="Personnes_charge" Type="int" />
+          <Property Name="dans_enfant_scolarisé" Type="int" />
+          <Property Name="état_sal" Type="nchar" MaxLength="20" />
+          <Property Name="date_entrée" Type="date" />
+          <Property Name="date_sortie" Type="date" />
+          <Property Name="mode_calcul" Type="nchar" MaxLength="20" />
+          <Property Name="nom_conjoin" Type="nchar" MaxLength="20" />
+          <Property Name="situation_conjoin" Type="nchar" MaxLength="20" />
+          <Property Name="adresse" Type="nchar" MaxLength="50" />
+          <Property Name="code_wilaya" Type="nchar" MaxLength="20" />
+          <Property Name="email" Type="nchar" MaxLength="40" />
+          <Property Name="num_sécurité_socialeee" Type="nchar" MaxLength="20" />
+          <Property Name="photos" Type="nchar" MaxLength="300" />
+          <Property Name="téléphone" Type="nchar" MaxLength="15" />
+          <Property Name="id_ent" Type="int" />
+        </EntityType>
+        <EntityType Name="teste">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityContainer Name="paieModelStoreContainer">
+          <EntitySet Name="Banque" EntityType="Self.Banque" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="baréme_IRG" EntityType="Self.baréme_IRG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bultin_paie" EntityType="Self.bultin_paie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cnas" EntityType="Self.Cnas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="contrat" EntityType="Self.contrat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Départemetent" EntityType="Self.Départemetent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Entreprise" EntityType="Self.Entreprise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="formule" EntityType="Self.formule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="login" EntityType="Self.login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ruberique_bulltin" EntityType="Self.ruberique_bulltin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rubrique" EntityType="Self.rubrique" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="salariés" EntityType="Self.salariés" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="teste" EntityType="Self.teste" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Barém_cnas" EntityType="Self.Barém_cnas" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Barém_cnas].[id] AS [id], 
+    [Barém_cnas].[Montant] AS [Montant], 
+    [Barém_cnas].[Libelé] AS [Libelé]
+    FROM [dbo].[Barém_cnas] AS [Barém_cnas]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Constantt" EntityType="Self.Constantt" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Constantt].[id_const] AS [id_const], 
+    [Constantt].[Code] AS [Code], 
+    [Constantt].[Intitulé] AS [Intitulé], 
+    [Constantt].[Valeur] AS [Valeur]
+    FROM [dbo].[Constantt] AS [Constantt]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="paieModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Banque">
+          <Key>
+            <PropertyRef Name="id_Banque" />
+          </Key>
+          <Property Name="id_Banque" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="téléphonee" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="nom_banque" Type="String" MaxLength="300" FixedLength="true" Unicode="true" />
+          <Property Name="adresse_banque" Type="String" MaxLength="300" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="baréme_IRG">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="valeur_inferieur" Type="Double" />
+          <Property Name="valeur_supérieur" Type="Double" />
+          <Property Name="Montant" Type="Double" />
+        </EntityType>
+        <EntityType Name="bultin_paie">
+          <Key>
+            <PropertyRef Name="id_bulltin" />
+          </Key>
+          <Property Name="id_bulltin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mois" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="année" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="net_a_apyer" Type="Double" />
+          <Property Name="salair_poste" Type="Double" />
+          <Property Name="totale_cotisable" Type="Double" />
+          <Property Name="net_imposable" Type="Double" />
+          <Property Name="Total_Retenu" Type="Double" />
+          <Property Name="mode_reglement" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="id_salarié" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Cna">
+          <Key>
+            <PropertyRef Name="id_cnas" />
+          </Key>
+          <Property Name="id_cnas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_cnas" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="adress_cnas" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="wilaya" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="téléphone" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="contrat">
+          <Key>
+            <PropertyRef Name="id_contrat" />
+          </Key>
+          <Property Name="id_contrat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date_embouche" Type="DateTime" Precision="0" />
+          <Property Name="frequnce_Paie" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="base_paie" Type="Double" />
+          <Property Name="id_salarié" Type="Int32" />
+          <Property Name="mode_reglement" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="salair_base" Type="Double" />
+          <Property Name="taux_jour" Type="Double" />
+          <Property Name="taux_heure" Type="Double" />
+          <Property Name="statu" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="date_fin" Type="DateTime" Precision="0" />
+          <Property Name="date_sotie" Type="DateTime" Precision="0" />
+          <Property Name="mod_calcule" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="rémunération" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="montont_exoneration" Type="Double" />
+          <Property Name="mode_paiment" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="banque" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CCP" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Rip" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="exoneration_de_irg" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Départemetent">
+          <Key>
+            <PropertyRef Name="id_département" />
+          </Key>
+          <Property Name="id_département" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_départ" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="chéf_département" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Entreprise">
+          <Key>
+            <PropertyRef Name="id_entreprise" />
+          </Key>
+          <Property Name="id_entreprise" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom_ent" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="adresse" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="form_juriduique" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Activité" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="rejistre_comerce" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Identifiant_Fiscal" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="code_postal" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Ville" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="fax" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="id_user" Type="Int32" />
+          <Property Name="téléphone" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="formule">
+          <Key>
+            <PropertyRef Name="id_formule" />
+          </Key>
+          <Property Name="id_formule" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="Double" />
+          <Property Name="Base" Type="Double" />
+          <Property Name="taux" Type="Double" />
+          <Property Name="montont" Type="Double" />
+          <Property Name="id_rubrique" Type="Int32" />
+          <Property Name="equoiation" Type="String" MaxLength="23" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="login">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="utilisateur" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="mot_de_pass" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="role" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ruberique_bulltin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_bulltin" Type="Int32" />
+          <Property Name="code" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+          <Property Name="nbr_base" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="taux" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="gain" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+          <Property Name="retenue" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+          <Property Name="libellé" Type="String" MaxLength="34" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="rubrique">
+          <Key>
+            <PropertyRef Name="id_rubrique" />
+          </Key>
+          <Property Name="id_rubrique" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="libellé" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="compt" Type="Int32" />
+          <Property Name="abrégé" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="date_de_création" Type="DateTime" Precision="3" />
+          <Property Name="Compte_contable" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="montant" Type="Double" />
+          <Property Name="imopsalble" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="cotisable" Type="Boolean" />
+          <Property Name="sens" Type="Boolean" />
+          <Property Name="inclur_dans_brut" Type="Boolean" />
+          <Property Name="ne_pas_inclur_dans_masse_salarié" Type="Boolean" />
+          <Property Name="reporter_aprée_cloture_mois" Type="Boolean" />
+          <Property Name="imopsalblee" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="valeur_initia" Type="Double" />
+          <Property Name="Type_val" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="etat" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="salariés">
+          <Key>
+            <PropertyRef Name="id_salarié" />
+          </Key>
+          <Property Name="matruculation" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="nom" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="prénom" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="dat_naiss" Type="DateTime" Precision="0" />
+          <Property Name="lieu_naiss" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="commune_naiss" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="wilaya_naiss" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="prénom_pére" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="nom_mére" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="prénom_mére" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="sexe" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="situation_famille" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="nationalité" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="adresse_compléte" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="code_postal" Type="Int32" />
+          <Property Name="matruculationss" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="id_salarié" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="personns_charge" Type="Int32" />
+          <Property Name="Personnes_charge" Type="Int32" />
+          <Property Name="dans_enfant_scolarisé" Type="Int32" />
+          <Property Name="état_sal" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="date_entrée" Type="DateTime" Precision="0" />
+          <Property Name="date_sortie" Type="DateTime" Precision="0" />
+          <Property Name="mode_calcul" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="nom_conjoin" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="situation_conjoin" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="adresse" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="code_wilaya" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="40" FixedLength="true" Unicode="true" />
+          <Property Name="num_sécurité_socialeee" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="photos" Type="String" MaxLength="300" FixedLength="true" Unicode="true" />
+          <Property Name="téléphone" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="id_ent" Type="Int32" />
+        </EntityType>
+        <EntityType Name="teste">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Barém_cnas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Montant" Type="Double" />
+          <Property Name="Libelé" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Constantt">
+          <Key>
+            <PropertyRef Name="id_const" />
+          </Key>
+          <Property Name="id_const" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Intitulé" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Valeur" Type="Double" />
+        </EntityType>
+        <EntityContainer Name="paieEntities12" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Banques" EntityType="Self.Banque" />
+          <EntitySet Name="baréme_IRG" EntityType="Self.baréme_IRG" />
+          <EntitySet Name="bultin_paie" EntityType="Self.bultin_paie" />
+          <EntitySet Name="Cnas" EntityType="Self.Cna" />
+          <EntitySet Name="contrats" EntityType="Self.contrat" />
+          <EntitySet Name="Départemetent" EntityType="Self.Départemetent" />
+          <EntitySet Name="Entreprises" EntityType="Self.Entreprise" />
+          <EntitySet Name="formules" EntityType="Self.formule" />
+          <EntitySet Name="logins" EntityType="Self.login" />
+          <EntitySet Name="ruberique_bulltin" EntityType="Self.ruberique_bulltin" />
+          <EntitySet Name="rubriques" EntityType="Self.rubrique" />
+          <EntitySet Name="salariés" EntityType="Self.salariés" />
+          <EntitySet Name="testes" EntityType="Self.teste" />
+          <EntitySet Name="Barém_cnas" EntityType="Self.Barém_cnas" />
+          <EntitySet Name="Constantts" EntityType="Self.Constantt" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="paieModelStoreContainer" CdmEntityContainer="paieEntities12">
+          <EntitySetMapping Name="Banques">
+            <EntityTypeMapping TypeName="paieModel.Banque">
+              <MappingFragment StoreEntitySet="Banque">
+                <ScalarProperty Name="id_Banque" ColumnName="id_Banque" />
+                <ScalarProperty Name="téléphonee" ColumnName="téléphonee" />
+                <ScalarProperty Name="nom_banque" ColumnName="nom_banque" />
+                <ScalarProperty Name="adresse_banque" ColumnName="adresse_banque" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="baréme_IRG">
+            <EntityTypeMapping TypeName="paieModel.baréme_IRG">
+              <MappingFragment StoreEntitySet="baréme_IRG">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="valeur_inferieur" ColumnName="valeur_inferieur" />
+                <ScalarProperty Name="valeur_supérieur" ColumnName="valeur_supérieur" />
+                <ScalarProperty Name="Montant" ColumnName="Montant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bultin_paie">
+            <EntityTypeMapping TypeName="paieModel.bultin_paie">
+              <MappingFragment StoreEntitySet="bultin_paie">
+                <ScalarProperty Name="id_bulltin" ColumnName="id_bulltin" />
+                <ScalarProperty Name="mois" ColumnName="mois" />
+                <ScalarProperty Name="année" ColumnName="année" />
+                <ScalarProperty Name="net_a_apyer" ColumnName="net_a_apyer" />
+                <ScalarProperty Name="salair_poste" ColumnName="salair_poste" />
+                <ScalarProperty Name="totale_cotisable" ColumnName="totale_cotisable" />
+                <ScalarProperty Name="net_imposable" ColumnName="net_imposable" />
+                <ScalarProperty Name="Total_Retenu" ColumnName="Total_Retenu" />
+                <ScalarProperty Name="mode_reglement" ColumnName="mode_reglement" />
+                <ScalarProperty Name="id_salarié" ColumnName="id_salarié" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cnas">
+            <EntityTypeMapping TypeName="paieModel.Cna">
+              <MappingFragment StoreEntitySet="Cnas">
+                <ScalarProperty Name="id_cnas" ColumnName="id_cnas" />
+                <ScalarProperty Name="nom_cnas" ColumnName="nom_cnas" />
+                <ScalarProperty Name="adress_cnas" ColumnName="adress_cnas" />
+                <ScalarProperty Name="wilaya" ColumnName="wilaya" />
+                <ScalarProperty Name="téléphone" ColumnName="téléphone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contrats">
+            <EntityTypeMapping TypeName="paieModel.contrat">
+              <MappingFragment StoreEntitySet="contrat">
+                <ScalarProperty Name="id_contrat" ColumnName="id_contrat" />
+                <ScalarProperty Name="date_embouche" ColumnName="date_embouche" />
+                <ScalarProperty Name="frequnce_Paie" ColumnName="frequnce_Paie" />
+                <ScalarProperty Name="base_paie" ColumnName="base_paie" />
+                <ScalarProperty Name="id_salarié" ColumnName="id_salarié" />
+                <ScalarProperty Name="mode_reglement" ColumnName="mode_reglement" />
+                <ScalarProperty Name="salair_base" ColumnName="salair_base" />
+                <ScalarProperty Name="taux_jour" ColumnName="taux_jour" />
+                <ScalarProperty Name="taux_heure" ColumnName="taux_heure" />
+                <ScalarProperty Name="statu" ColumnName="statu" />
+                <ScalarProperty Name="date_fin" ColumnName="date_fin" />
+                <ScalarProperty Name="date_sotie" ColumnName="date_sotie" />
+                <ScalarProperty Name="mod_calcule" ColumnName="mod_calcule" />
+                <ScalarProperty Name="rémunération" ColumnName="rémunération" />
+                <ScalarProperty Name="montont_exoneration" ColumnName="montont_exoneration" />
+                <ScalarProperty Name="mode_paiment" ColumnName="mode_paiment" />
+                <ScalarProperty Name="banque" ColumnName="banque" />
+                <ScalarProperty Name="CCP" ColumnName="CCP" />
+                <ScalarProperty Name="Rip" ColumnName="Rip" />
+                <ScalarProperty Name="exoneration_de_irg" ColumnName="exoneration_de_irg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Départemetent">
+            <EntityTypeMapping TypeName="paieModel.Départemetent">
+              <MappingFragment StoreEntitySet="Départemetent">
+                <ScalarProperty Name="id_département" ColumnName="id_département" />
+                <ScalarProperty Name="nom_départ" ColumnName="nom_départ" />
+                <ScalarProperty Name="chéf_département" ColumnName="chéf_département" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Entreprises">
+            <EntityTypeMapping TypeName="paieModel.Entreprise">
+              <MappingFragment StoreEntitySet="Entreprise">
+                <ScalarProperty Name="id_entreprise" ColumnName="id_entreprise" />
+                <ScalarProperty Name="nom_ent" ColumnName="nom_ent" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="form_juriduique" ColumnName="form_juriduique" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="Activité" ColumnName="Activité" />
+                <ScalarProperty Name="rejistre_comerce" ColumnName="rejistre_comerce" />
+                <ScalarProperty Name="Identifiant_Fiscal" ColumnName="Identifiant_Fiscal" />
+                <ScalarProperty Name="code_postal" ColumnName="code_postal" />
+                <ScalarProperty Name="Ville" ColumnName="Ville" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="téléphone" ColumnName="téléphone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="formules">
+            <EntityTypeMapping TypeName="paieModel.formule">
+              <MappingFragment StoreEntitySet="formule">
+                <ScalarProperty Name="id_formule" ColumnName="id_formule" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="Base" ColumnName="Base" />
+                <ScalarProperty Name="taux" ColumnName="taux" />
+                <ScalarProperty Name="montont" ColumnName="montont" />
+                <ScalarProperty Name="id_rubrique" ColumnName="id_rubrique" />
+                <ScalarProperty Name="equoiation" ColumnName="equoiation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="logins">
+            <EntityTypeMapping TypeName="paieModel.login">
+              <MappingFragment StoreEntitySet="login">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="utilisateur" ColumnName="utilisateur" />
+                <ScalarProperty Name="mot_de_pass" ColumnName="mot_de_pass" />
+                <ScalarProperty Name="role" ColumnName="role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ruberique_bulltin">
+            <EntityTypeMapping TypeName="paieModel.ruberique_bulltin">
+              <MappingFragment StoreEntitySet="ruberique_bulltin">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_bulltin" ColumnName="id_bulltin" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="nbr_base" ColumnName="nbr_base" />
+                <ScalarProperty Name="taux" ColumnName="taux" />
+                <ScalarProperty Name="gain" ColumnName="gain" />
+                <ScalarProperty Name="retenue" ColumnName="retenue" />
+                <ScalarProperty Name="libellé" ColumnName="libellé" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rubriques">
+            <EntityTypeMapping TypeName="paieModel.rubrique">
+              <MappingFragment StoreEntitySet="rubrique">
+                <ScalarProperty Name="id_rubrique" ColumnName="id_rubrique" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="libellé" ColumnName="libellé" />
+                <ScalarProperty Name="compt" ColumnName="compt" />
+                <ScalarProperty Name="abrégé" ColumnName="abrégé" />
+                <ScalarProperty Name="date_de_création" ColumnName="date_de_création" />
+                <ScalarProperty Name="Compte_contable" ColumnName="Compte_contable" />
+                <ScalarProperty Name="montant" ColumnName="montant" />
+                <ScalarProperty Name="imopsalble" ColumnName="imopsalble" />
+                <ScalarProperty Name="cotisable" ColumnName="cotisable" />
+                <ScalarProperty Name="sens" ColumnName="sens" />
+                <ScalarProperty Name="inclur_dans_brut" ColumnName="inclur_dans_brut" />
+                <ScalarProperty Name="ne_pas_inclur_dans_masse_salarié" ColumnName="ne_pas_inclur_dans_masse_salarié" />
+                <ScalarProperty Name="reporter_aprée_cloture_mois" ColumnName="reporter_aprée_cloture_mois" />
+                <ScalarProperty Name="imopsalblee" ColumnName="imopsalblee" />
+                <ScalarProperty Name="valeur_initia" ColumnName="valeur_initia" />
+                <ScalarProperty Name="Type_val" ColumnName="Type_val" />
+                <ScalarProperty Name="etat" ColumnName="etat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="salariés">
+            <EntityTypeMapping TypeName="paieModel.salariés">
+              <MappingFragment StoreEntitySet="salariés">
+                <ScalarProperty Name="matruculation" ColumnName="matruculation" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="prénom" ColumnName="prénom" />
+                <ScalarProperty Name="dat_naiss" ColumnName="dat_naiss" />
+                <ScalarProperty Name="lieu_naiss" ColumnName="lieu_naiss" />
+                <ScalarProperty Name="commune_naiss" ColumnName="commune_naiss" />
+                <ScalarProperty Name="wilaya_naiss" ColumnName="wilaya_naiss" />
+                <ScalarProperty Name="prénom_pére" ColumnName="prénom_pére" />
+                <ScalarProperty Name="nom_mére" ColumnName="nom_mére" />
+                <ScalarProperty Name="prénom_mére" ColumnName="prénom_mére" />
+                <ScalarProperty Name="sexe" ColumnName="sexe" />
+                <ScalarProperty Name="situation_famille" ColumnName="situation_famille" />
+                <ScalarProperty Name="nationalité" ColumnName="nationalité" />
+                <ScalarProperty Name="adresse_compléte" ColumnName="adresse_compléte" />
+                <ScalarProperty Name="code_postal" ColumnName="code_postal" />
+                <ScalarProperty Name="matruculationss" ColumnName="matruculationss" />
+                <ScalarProperty Name="id_salarié" ColumnName="id_salarié" />
+                <ScalarProperty Name="personns_charge" ColumnName="personns_charge" />
+                <ScalarProperty Name="Personnes_charge" ColumnName="Personnes_charge" />
+                <ScalarProperty Name="dans_enfant_scolarisé" ColumnName="dans_enfant_scolarisé" />
+                <ScalarProperty Name="état_sal" ColumnName="état_sal" />
+                <ScalarProperty Name="date_entrée" ColumnName="date_entrée" />
+                <ScalarProperty Name="date_sortie" ColumnName="date_sortie" />
+                <ScalarProperty Name="mode_calcul" ColumnName="mode_calcul" />
+                <ScalarProperty Name="nom_conjoin" ColumnName="nom_conjoin" />
+                <ScalarProperty Name="situation_conjoin" ColumnName="situation_conjoin" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="code_wilaya" ColumnName="code_wilaya" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="num_sécurité_socialeee" ColumnName="num_sécurité_socialeee" />
+                <ScalarProperty Name="photos" ColumnName="photos" />
+                <ScalarProperty Name="téléphone" ColumnName="téléphone" />
+                <ScalarProperty Name="id_ent" ColumnName="id_ent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="testes">
+            <EntityTypeMapping TypeName="paieModel.teste">
+              <MappingFragment StoreEntitySet="teste">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Barém_cnas">
+            <EntityTypeMapping TypeName="paieModel.Barém_cnas">
+              <MappingFragment StoreEntitySet="Barém_cnas">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Montant" ColumnName="Montant" />
+                <ScalarProperty Name="Libelé" ColumnName="Libelé" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Constantts">
+            <EntityTypeMapping TypeName="paieModel.Constantt">
+              <MappingFragment StoreEntitySet="Constantt">
+                <ScalarProperty Name="id_const" ColumnName="id_const" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Intitulé" ColumnName="Intitulé" />
+                <ScalarProperty Name="Valeur" ColumnName="Valeur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
