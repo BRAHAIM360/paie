@@ -3,8 +3,8 @@
 this is c# Desktop project to do  Payroll Management easily  .
 
 ## Project screen shot  
-![alt text](/paie/tree/master/images/1.PNG)
-![alt text](/paie/tree/master/images/2.PNG)
+![](/paie/tree/master/images/1.PNG)
+![](/paie/tree/master/images/2.PNG)
 ![alt text](/paie/tree/master/images/3.PNG)
 ![alt text](/paie/tree/master/images/4.PNG)
 
